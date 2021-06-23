@@ -5,6 +5,8 @@ Feature: Testing Newstuck
     @Testing
     Scenario Outline: Selecr date and time Formate
         Given TestFrameWork
+        Then Login
+        Then Verify 
 
 
         Examples:
