@@ -6,7 +6,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/features", glue = "stepDefinitions" , stepNotifications = true)
+@CucumberOptions(features = "src/test/java/features", glue = "stepDefinitions", tags = "@SurveyForm001", plugin = {
+        "pretty" }, monochrome = true, stepNotifications = true)
 
 public class TestRunner {
 

@@ -3,12 +3,57 @@ Feature: Testing Newstuck
 
 
     @Testing
+    Scenario Outline: To get all the links in home page
+        Given Access WebDriverManager
+        Given Find all the links in the HomePage
+
+        Examples:
+            | Website   |
+            | Framework |
+
+    @SmokeTest
     Scenario Outline: Selecr date and time Formate
-        Given TestFrameWork
-        Then Login
-        Then Verify 
+        Given Read Excel
+
+        Examples:
+            | Website   |
+            | Framework |
+
+    @FindText
+    Scenario Outline: To find given text
+        Given Access WebDriverManager
+        Given Search for a text in Homewebpage
+        Given Access WebDriverManager
+        Given Search word in AboutUsPage
+        Given Access WebDriverManager
+        Given Search word in OurPortfolios
+        Given Access WebDriverManager
+        Given Search word in LifeAtPro
+        Given Access WebDriverManager
+        Given Search word in Careers
 
 
         Examples:
-            | Website  |
+            | Website   |
+            | Framework |
+
+    @SurveyForm001
+    Scenario Outline: Survey form test
+        Given Access WebDriverManager For Survey Form
+        Then Launch chrome browser for survey form
+        Then Enter Phone number for survey form
+        Then Then click countinue button
+        Then Then click countinue button
+        Then Wait action for "20" seconds
+        Then Click Main Option
+        Then Verify User Details
+        Then Click Add Form Button
+        Then Verify Add form Page
+        Then Enter form title name
+        Then Enter form Subtitle name
+        Then Save survey
+        Then Quit driver
+
+        Examples:
+            | Website   |
             | Framework |
