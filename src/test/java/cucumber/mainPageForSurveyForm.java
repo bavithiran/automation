@@ -50,6 +50,18 @@ public class mainPageForSurveyForm extends superClass {
     By fivthQuestionField = By.xpath(
             "//mat-expansion-panel[5]//div//div//app-question//div//div//div//div//input[@placeholder='Enter question']");
 
+    // Required
+    By oneRequiredField = By.xpath(
+            "/html/body/app-root/div/app-layout/app-form-builder/div/div/form/mat-accordion/mat-expansion-panel[1]/div/div/app-question/div/div[1]/mat-checkbox");
+    By twoRequiredField = By.xpath(
+            "/html/body/app-root/div/app-layout/app-form-builder/div/div/form/mat-accordion/mat-expansion-panel[2]/div/div/app-question/div/div[1]/mat-checkbox");
+    By threeRequiredField = By.xpath(
+            "/html/body/app-root/div/app-layout/app-form-builder/div/div/form/mat-accordion/mat-expansion-panel[3]/div/div/app-question/div/div[1]/mat-checkbox");
+    By fourRequiredField = By.xpath(
+            "/html/body/app-root/div/app-layout/app-form-builder/div/div/form/mat-accordion/mat-expansion-panel[4]/div/div/app-question/div/div[1]/mat-checkbox");
+    By fiveRequiredField = By.xpath(
+            "/html/body/app-root/div/app-layout/app-form-builder/div/div/form/mat-accordion/mat-expansion-panel[5]/div/div/app-question/div/div[1]/mat-checkbox");
+
     WebDriverWait wait;
     String enteredFormTitle;
     String enteredSubFormTitle;
@@ -134,7 +146,7 @@ public class mainPageForSurveyForm extends superClass {
         driver.findElement(saveSurvey).click();
     }
 
-    public void clickSurveyFormForAddingResponse(WebDriver driver, String surveyFormName) {
+    public void clickSurveyFormForAddingResponseUsingFormName(WebDriver driver, String surveyFormName) {
 
         getwaitdriver(driver).until(ExpectedConditions
                 .visibilityOfElementLocated(By.xpath("//div[normalize-space()='" + enteredFormTitle + "']")));
@@ -167,10 +179,12 @@ public class mainPageForSurveyForm extends superClass {
 
     }
 
-    public void verifySave(WebDriver driver){
-        getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/app-root/div/app-layout/app-responses/div/h3")));
-        System.out.println(driver.findElement(By.xpath("/html/body/app-root/div/app-layout/app-responses/div/h3")).getText());
-        
+    public void verifySave(WebDriver driver) {
+        getwaitdriver(driver).until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("/html/body/app-root/div/app-layout/app-responses/div/h3")));
+        System.out.println(
+                driver.findElement(By.xpath("/html/body/app-root/div/app-layout/app-responses/div/h3")).getText());
+
     }
 
     /////
@@ -185,6 +199,10 @@ public class mainPageForSurveyForm extends superClass {
         // Enter question
         getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(firstQuestionField));
         driver.findElement(firstQuestionField).sendKeys(getValueFromDataConfig("response.textField.Question"));
+
+        // twoRequiredField
+        getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(oneRequiredField));
+        driver.findElement(oneRequiredField).click();
 
         Thread.sleep(2000);
 
@@ -214,6 +232,9 @@ public class mainPageForSurveyForm extends superClass {
         driver.findElement(enterOptions).sendKeys(Keys.ENTER);
         Thread.sleep(1000);
 
+        getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(twoRequiredField));
+        driver.findElement(twoRequiredField).click();
+
         Thread.sleep(2000);
 
     }
@@ -229,6 +250,9 @@ public class mainPageForSurveyForm extends superClass {
         // Enter question
         getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(thirdQuestionField));
         driver.findElement(thirdQuestionField).sendKeys(getValueFromDataConfig("response.textArea.Question"));
+
+        getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(threeRequiredField));
+        driver.findElement(threeRequiredField).click();
 
         Thread.sleep(2000);
 
@@ -246,6 +270,9 @@ public class mainPageForSurveyForm extends superClass {
         getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(fourthQuestionField));
         driver.findElement(fourthQuestionField).sendKeys(getValueFromDataConfig("response.PhoneNumber.Question"));
 
+        getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(fourRequiredField));
+        driver.findElement(fourRequiredField).click();
+
         Thread.sleep(2000);
 
     }
@@ -262,6 +289,9 @@ public class mainPageForSurveyForm extends superClass {
         // Enter question
         getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(fivthQuestionField));
         driver.findElement(fivthQuestionField).sendKeys(getValueFromDataConfig("response.imageUpload.Question"));
+
+        getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(fiveRequiredField));
+        driver.findElement(fiveRequiredField).click();
 
         Thread.sleep(2000);
 
