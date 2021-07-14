@@ -32,7 +32,7 @@ public class surveyFormStepDefs extends mainPageForSurveyForm {
     @Then("^Launch chrome browser for survey form$")
     public void launch_chrome_browser_for_survey_forms() throws IOException {
         // Launching sample website
-        driver.get(getValueFromDataConfig("url"));
+        driver.get(getValueFromDataConfig("Stage.url"));
         // driver.get("https://www.onemindindia.com/home");
         driver.getWindowHandle();
         driver.manage().window().maximize();
@@ -40,7 +40,7 @@ public class surveyFormStepDefs extends mainPageForSurveyForm {
 
     @Then("^Enter Phone number for survey form$")
     public void enter_phone_number_for_survey_form() throws IOException {
-        enterPhoneNumber(driver, getValueFromDataConfig("phone"));
+        enterPhoneNumber(driver, getValueFromDataConfig("phoneNumber"));
     }
 
     @Then("^Then click countinue button$")
@@ -98,6 +98,16 @@ public class surveyFormStepDefs extends mainPageForSurveyForm {
     @Then("^Enter Question in text field$")
     public void enter_question_in_text_field() {
         enterQuestionInTextField(driver);
+    }
+
+    @Then("^Add Field and Questions$")
+    public void add_Field_and_Questions() throws IOException, InterruptedException{
+        addFieldsAndQuestionValues(driver);
+    }
+
+    @Then("Verify Save")
+    public void verify_save(){
+        verifySave(driver);
     }
 
     @Then("^Save survey$")

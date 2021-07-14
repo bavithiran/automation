@@ -28,13 +28,7 @@ public class superClass {
         Properties p = new Properties();
         p.load(reader);
 
-        if (value == "phone") {
-            returnValue = p.getProperty("phoneNumber");
-
-        }
-        if (value == "url") {
-            returnValue = p.getProperty("Stage.url");
-        }
+        returnValue = p.getProperty(value);
         return returnValue;
 
     }
