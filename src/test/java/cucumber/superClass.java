@@ -1,10 +1,13 @@
 package cucumber;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class superClass {
@@ -30,6 +33,21 @@ public class superClass {
 
         returnValue = p.getProperty(value);
         return returnValue;
+
+    }
+
+    public By getValueFromElementAddressConfig(String value) throws IOException {
+        FileReader reader = new FileReader("./src/test/resources/elementAddress.properties");
+
+        Properties p = new Properties();
+        p.load(reader);
+
+        returnValue = p.getProperty(value);
+
+        By elementByAddress = By.xpath(returnValue);
+
+        //WebElement elementAddress = driver.findElement(By.xpath(returnValue));
+        return elementByAddress;
 
     }
 

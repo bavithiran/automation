@@ -44,7 +44,7 @@ public class surveyFormStepDefs extends mainPageForSurveyForm {
     }
 
     @Then("^Then click countinue button$")
-    public void then_Click_countinue_button() throws InterruptedException {
+    public void then_Click_countinue_button() throws InterruptedException, IOException {
         clickCountinueButton(driver);
         Thread.sleep(3000);
     }
@@ -55,7 +55,7 @@ public class surveyFormStepDefs extends mainPageForSurveyForm {
     }
 
     @Then("^Click Main Option$")
-    public void click_Main_Options() {
+    public void click_Main_Options() throws IOException {
         mainOptionButtonClick(driver);
 
     }
