@@ -115,6 +115,16 @@ public class surveyFormStepDefs extends mainPageForSurveyForm {
         clickSaveSurveyButton(driver);
     }
 
+    @Then("^verify data entry page$")
+    public void verify_data_entry_page() throws InterruptedException{
+        toCheckStartPageOfDataEntry(driver);
+    }
+
+    @Then("^Click next button in dataEntry form$")
+    public void click_next_button_in_dataEntry_form(){
+        
+    }
+
     @Then("^Quit driver$")
     public void quit_driver() {
         driver.quit();

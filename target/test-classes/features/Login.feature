@@ -83,6 +83,8 @@ Feature: Testing Newstuck
         Then Wait action for "7" seconds
         Then Save survey
         Then Verify Save
+        Then Click add button in survey builder form
+        Then verify data entry page
         Then Quit driver
 
 
