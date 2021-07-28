@@ -1,5 +1,5 @@
-Feature: Testing Newstuck
-    Verifing Scenarios for Newstuck Website
+Feature: Testing Survey form
+    Verifing Scenarios for survey form
 
 
     @Testing
