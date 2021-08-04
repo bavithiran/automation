@@ -66,7 +66,7 @@ Feature: Testing Survey form
 
 
     @TotalField
-    Scenario Outline: Survey form - Creating a survey form for Testing purpose [with 6 field available]
+    Scenario Outline: Survey form - Creating a survey form for Testing purpose [with 6 field available] Live
         Given Access WebDriverManager For Survey Form
         Then Launch chrome browser for survey form
         Then Enter Phone number for survey form

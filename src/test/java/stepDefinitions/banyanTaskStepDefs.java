@@ -48,6 +48,22 @@ public class banyanTaskStepDefs extends mainPageForBanyan {
 
     }
 
+    @Then("^Click event tab for BanyanTask$")
+    public void click_event_tab_for_banyanTask() throws IOException, InterruptedException{
+        eventCreation(driver);
+    }
+
+    @Then("Click add button event page for BanyanTask$")
+    public void click_add_button_Main_event_Page(){
+
+    }
+
+    @Then("^Click Add participant button for BanyanTask$")
+    public void click_add_participant_button_for_BanyanTask(){
+
+    }
+
+
     @Then("^Click user in BanayanTask$")
     public void click_user_BanyanTask() throws IOException{
         clickChatUser(driver);
