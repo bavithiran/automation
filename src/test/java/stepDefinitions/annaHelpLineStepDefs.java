@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.runner.RunWith;
@@ -18,15 +19,92 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
     WebDriver driver;
 
     @Given("^Access WebDriverManager For AnnaHelpLine$")
-    public void access_WebdriverManager_annaHelpLine() {
+    public void access_WebdriverManager() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
+        // driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
-    
+    @Then("^Launch chrome browser for AnnaHelpLine$")
+    public void launch_chrome_browser_for_survey_forms() throws IOException {
+        // Launching sample website
+        driver.get(getValueFromDataConfig("Stage.url.annaHelpLine"));
+        // driver.get("https://www.onemindindia.com/home");
+        driver.getWindowHandle();
+        driver.manage().window().maximize();
+    }
+
+    @Then("^Click Login for AnnaHelpLine$")
+    public void click_Login_for_annaHelpLine() throws IOException {
+        clickLoginButton(driver);
+    }
+
+    @Then("^Enter Phone number for AnnaHelpLine$")
+    public void enter_phone_number_for_survey_form() throws IOException {
+        enterPhoneNumber(driver, getValueFromDataConfig("phoneNumber"));
+    }
+
+    @Then("^Enter otp$")
+    public void enter_otp() throws IOException {
+        enterOtp(driver, getValueFromDataConfig("otp"));
+
+    }
+
+    @Then("^Then click countinue button AnnaHelpLine$")
+    public void then_Click_countinue_button() throws InterruptedException, IOException {
+        clickCountinueButton(driver);
+        Thread.sleep(3000);
+    }
+
+    @Then("^Wait action for \"([^\"]*)\" seconds AnnaHelpLine$")
+    public void wiat_time(int seconds) throws InterruptedException {
+        Thread.sleep(seconds * 1000);
+    }
+
+    @Then("Click new Complaint")
+    public void click_new_complaint() throws IOException, InterruptedException {
+        clickNextInSplashScreen(driver);
+        // Write code here that turns the phrase above into concrete actions
+        clickNewComplaintButton(driver);
+    }
+
+    @Then("select issue location")
+    public void select_issue_location() throws IOException, InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+        selectLocation(driver);
+    }
+
+    @Then("select issue Street")
+    public void select_issue_street() throws IOException, InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+        selectStreet(driver);
+    }
+
+    @Then("select issue issueCategory")
+    public void select_issue_issue_category() throws IOException {
+        // Write code here that turns the phrase above into concrete actions
+        selectIssueCategory(driver);
+    }
+
+    @Then("select issue issue")
+    public void select_issue_issue() throws IOException {
+        // Write code here that turns the phrase above into concrete actions
+        selectIssue(driver);
+    }
+
+    @Then("select specific issue")
+    public void select_specific_issue() throws IOException {
+        // Write code here that turns the phrase above into concrete actions
+        selectSpecificIssue(driver);
+    }
+
+    @Then("click submit")
+    public void click_submit() throws IOException {
+        // Write code here that turns the phrase above into concrete actions
+        clickSubmit(driver);
+    }
 
 }

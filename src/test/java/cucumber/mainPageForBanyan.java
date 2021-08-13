@@ -80,20 +80,17 @@ public class mainPageForBanyan extends superClass {
                 // Enter title for event creation page
                 getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(
                                 getValueFromElementAddressConfig("banyan.eventCreation.title")));
-                driver.findElement(getValueFromElementAddressConfig("banyan.eventCreation.title"))
-                                .sendKeys("Enter title");
+                driver.findElement(getValueFromElementAddressConfig("banyan.eventCreation.title")).sendKeys("Enter title");
 
                 // Enter location for event creation page
                 getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(
                                 getValueFromElementAddressConfig("banyan.eventCreation.location")));
-                driver.findElement(getValueFromElementAddressConfig("banyan.eventCreation.location"))
-                                .sendKeys("Enter location");
+                driver.findElement(getValueFromElementAddressConfig("banyan.eventCreation.location")).sendKeys("Enter location");
 
                 // Enter details for event creation page
                 getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(
                                 getValueFromElementAddressConfig("banyan.eventCreation.details")));
-                driver.findElement(getValueFromElementAddressConfig("banyan.eventCreation.details"))
-                                .sendKeys("Enter details");
+                driver.findElement(getValueFromElementAddressConfig("banyan.eventCreation.details")).sendKeys("Enter details");
 
                 // Click add for participant add
                 getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(
@@ -120,12 +117,13 @@ public class mainPageForBanyan extends superClass {
                 driver.findElement(getValueFromElementAddressConfig("banyan.ParticipantSelect.bavithiranRamesh"))
                                 .click();
 
-                Thread.sleep(2000);
+                                Thread.sleep(2000);
 
                 // Click add guest
                 getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(
-                                getValueFromElementAddressConfig("banyan.bodyClick")));
-                driver.findElement(getValueFromElementAddressConfig("banyan.bodyClick")).click();
+                                getValueFromElementAddressConfig("banyan.eventCreation.AddGuestTitle")));
+                driver.findElement(getValueFromElementAddressConfig("banyan.eventCreation.AddGuestTitle"))
+                                .click();
 
                 // Click save icon
                 getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(

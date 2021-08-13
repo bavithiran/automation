@@ -5,15 +5,20 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class superClass {
 
     public WebDriverWait wait;
     String returnValue;
+    public Actions action;
 
     public WebDriverWait getwaitdriver(WebDriver driver) {
         if (wait == null) {
@@ -22,6 +27,16 @@ public class superClass {
         } else {
             return wait;
         }
+    }
+
+    public Actions getActionDriver(WebDriver driver){
+        if (action == null) {
+            action =  new Actions(driver);
+            return action;
+        } else {
+            return action;
+        }
+        
     }
 
     public String getValueFromDataConfig(String value) throws IOException {
