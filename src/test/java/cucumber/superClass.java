@@ -3,6 +3,8 @@ package cucumber;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -111,6 +113,15 @@ public class superClass {
         // Lastly releasing out all the records
         // using the flush() method
         fileHandler.flush();
+    }
+
+    public String getcurrrentDateAndTime() {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+        return dtf.format(now);
+
     }
 
 }

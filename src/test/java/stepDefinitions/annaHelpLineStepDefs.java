@@ -1,11 +1,17 @@
 package stepDefinitions;
 
 import java.io.IOException;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Set;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,6 +23,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
 
     WebDriver driver;
+    public static final String USERNAME = "bavithiranramesh_78dSm4";
+    public static final String AUTOMATE_KEY = "reJ3DTPjYxNPkgq8u5XP";
+    public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
     @Given("^Access WebDriverManager For AnnaHelpLine$")
     public void access_WebdriverManager() {
@@ -26,6 +35,35 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
         // driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+    }
+
+    @Given("^Access BrowserStack For AnnaHelpLine$")
+    public void access_BrowserStack() throws IOException {
+        Hashtable<String, String> capsHashtable = new Hashtable<String, String>();
+            capsHashtable.put("browser", "chrome");
+            capsHashtable.put("browser_version", "latest");
+            capsHashtable.put("os", "Windows");
+            capsHashtable.put("os_version", "10");
+            capsHashtable.put("build", "AnnaHelpLine-browserstack-build-1");
+            capsHashtable.put("name", "Thread 1" + getcurrrentDateAndTime());
+
+            // Execute caps
+            String key;
+            DesiredCapabilities caps = new DesiredCapabilities();
+            // Iterate over the hashtable and set the capabilities
+            Set<String> keys = capsHashtable.keySet();
+            Iterator<String> itr = keys.iterator();
+            while (itr.hasNext()) {
+                key = itr.next();
+                caps.setCapability(key, capsHashtable.get(key));
+            }
+
+            driver = new RemoteWebDriver(new URL(URL), caps);
+
+            driver.get(getValueFromDataConfig("Stage.url.annaHelpLine"));
+            // driver.get("https://www.onemindindia.com/home");
+            driver.getWindowHandle();
+            driver.manage().window().maximize();
     }
 
     @Then("^Launch chrome browser for AnnaHelpLine$")
@@ -146,6 +184,11 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
     public void verify_complaint_creation() throws Exception{
         complaintCreationVerification(driver);
         getListOfComplaintCards(driver);
+    }
+
+    @Then("Quit Browser")
+    public void quit_browser(){
+        quitBrowser(driver);
     }
 
 }

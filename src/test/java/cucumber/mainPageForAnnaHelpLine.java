@@ -275,14 +275,18 @@ public class mainPageForAnnaHelpLine extends superClass {
                 getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(
                                 getValueFromElementAddressConfig("an.totalCpmplaintCards.list")));
                 ListofComplaints = driver.findElements(getValueFromElementAddressConfig("an.totalCpmplaintCards.list"));
-                //setLogger(String.valueOf(ListofComplaints.size()));
+                // setLogger(String.valueOf(ListofComplaints.size()));
                 System.out.println("Number of complaints : " + ListofComplaints.size());
                 for (WebElement complaint : ListofComplaints) {
 
                         System.out.print("Complaint ID : " + complaint.getText());
-                        //setLogger(complaint.getText());
+                        // setLogger(complaint.getText());
                 }
 
+        }
+
+        public void quitBrowser(WebDriver driver) {
+                driver.quit();
         }
 
 }
