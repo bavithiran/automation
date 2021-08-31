@@ -143,8 +143,9 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
     }
 
     @Then("Verify complaint creation")
-    public void verify_complaint_creation() throws IOException{
+    public void verify_complaint_creation() throws Exception{
         complaintCreationVerification(driver);
+        getListOfComplaintCards(driver);
     }
 
 }

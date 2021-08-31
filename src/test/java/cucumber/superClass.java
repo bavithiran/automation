@@ -4,8 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
-
-
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.XMLFormatter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,14 +31,14 @@ public class superClass {
         }
     }
 
-    public Actions getActionDriver(WebDriver driver){
+    public Actions getActionDriver(WebDriver driver) {
         if (action == null) {
-            action =  new Actions(driver);
+            action = new Actions(driver);
             return action;
         } else {
             return action;
         }
-        
+
     }
 
     public String getValueFromDataConfig(String value) throws IOException {
@@ -61,7 +63,7 @@ public class superClass {
 
         By elementByAddress = By.xpath(returnValue);
 
-        //WebElement elementAddress = driver.findElement(By.xpath(returnValue));
+        // WebElement elementAddress = driver.findElement(By.xpath(returnValue));
         return elementByAddress;
 
     }
@@ -85,6 +87,30 @@ public class superClass {
         }
 
         return sb.toString();
+    }
+
+    public void setLogger(String log) throws Exception {
+
+        // Creating an object of XMLFormatter class
+        XMLFormatter xmlFormatter = new XMLFormatter();
+
+        // Setting level to Info
+        LogRecord logRecord = new LogRecord(Level.INFO, "Logrecord message to be printed in xml file..");
+        logRecord.setMessage(log);
+        
+
+        // We can see the output of LogRecord in
+        // logrecordxml.xml file
+        FileHandler fileHandler = new FileHandler("logrecordxml.xml");
+        fileHandler.setFormatter(xmlFormatter);
+
+        // Prepared data is displayed in the
+        // logrecordxml.xml file
+        fileHandler.publish(logRecord);
+
+        // Lastly releasing out all the records
+        // using the flush() method
+        fileHandler.flush();
     }
 
 }

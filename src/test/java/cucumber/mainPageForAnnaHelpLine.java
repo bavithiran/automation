@@ -19,6 +19,7 @@ public class mainPageForAnnaHelpLine extends superClass {
         WebDriver driver;
         List<WebElement> ListOfLocation;
         Boolean welcomebackTextIsDisplayed;
+        List<WebElement> ListofComplaints;
 
         public void clickLoginButton(WebDriver driver) throws IOException {
                 getwaitdriver(driver).until(ExpectedConditions
@@ -268,6 +269,20 @@ public class mainPageForAnnaHelpLine extends superClass {
                 getwaitdriver(driver).until(ExpectedConditions
                                 .visibilityOfElementLocated(getValueFromElementAddressConfig("ah.click.submit")));
                 driver.findElement(getValueFromElementAddressConfig("ah.click.submit")).click();
+        }
+
+        public void getListOfComplaintCards(WebDriver driver) throws Exception {
+                getwaitdriver(driver).until(ExpectedConditions.visibilityOfElementLocated(
+                                getValueFromElementAddressConfig("an.totalCpmplaintCards.list")));
+                ListofComplaints = driver.findElements(getValueFromElementAddressConfig("an.totalCpmplaintCards.list"));
+                //setLogger(String.valueOf(ListofComplaints.size()));
+                System.out.println("Number of complaints : " + ListofComplaints.size());
+                for (WebElement complaint : ListofComplaints) {
+
+                        System.out.print("Complaint ID : " + complaint.getText());
+                        //setLogger(complaint.getText());
+                }
+
         }
 
 }
