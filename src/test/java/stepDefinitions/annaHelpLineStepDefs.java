@@ -71,6 +71,36 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
         clickNewComplaintButton(driver);
     }
 
+    @Then("^choose issue location$")
+    public void choose_issue_location() throws Throwable {
+        chooseIssueLocation(driver);
+    }
+
+    @Then("^choose issue street$")
+    public void choose_issue_street() throws Throwable {
+        chooseIssueStreet(driver);
+    }
+
+    @Then("^enter Address$")
+    public void enter_address() throws Throwable {
+        enterAddress(driver);
+    }
+
+    @Then("^choose issue category$")
+    public void choose_issue_category() throws Throwable {
+        chooseIssueCategory(driver);
+    }
+
+    @Then("^choose issue$")
+    public void choose_issue() throws Throwable {
+        chooseIssue(driver);
+    }
+
+    @Then("^choose specific issue$")
+    public void choose_specific_issue() throws Throwable {
+        chooseSpecificIssue(driver);
+    }
+
     @Then("select issue location")
     public void select_issue_location() throws IOException, InterruptedException {
         // Write code here that turns the phrase above into concrete actions
@@ -101,10 +131,20 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
         selectSpecificIssue(driver);
     }
 
+    @Then("^enter issue details$")
+    public void enter_issue_details() throws Throwable {
+        enterIssueDetails(driver);
+    }
+
     @Then("click submit")
     public void click_submit() throws IOException {
         // Write code here that turns the phrase above into concrete actions
         clickSubmit(driver);
+    }
+
+    @Then("Verify complaint creation")
+    public void verify_complaint_creation() throws IOException{
+        complaintCreationVerification(driver);
     }
 
 }

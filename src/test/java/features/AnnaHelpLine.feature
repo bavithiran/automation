@@ -13,12 +13,15 @@ Feature: Testing AnnaHelpline
         Then Then click countinue button AnnaHelpLine
         Then Wait action for "10" seconds AnnaHelpLine
         Then Click new Complaint
-        Then select issue location
-        Then select issue Street
-        Then select issue issueCategory
-        Then select issue issue
-        Then select specific issue
+        Then choose issue location
+        Then choose issue street
+        Then enter Address
+        Then choose issue category
+        Then choose issue
+        Then choose specific issue
+        Then enter issue details
         Then click submit
+        Then Verify complaint creation
 
         Examples:
             | Website   |
