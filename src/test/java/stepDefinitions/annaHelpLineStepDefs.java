@@ -75,6 +75,15 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
         driver.manage().window().maximize();
     }
 
+    @Then("^Launch chrome browser for \"([^\"]*)\" AnnaHelpLine$")
+    public void launch_chrome_browser_for_something_annahelpline(String env) throws Throwable {
+       // Launching sample website
+       driver.get(getValueFromDataConfig(env));
+       // driver.get("https://www.onemindindia.com/home");
+       driver.getWindowHandle();
+       driver.manage().window().maximize();
+    }
+
     @Then("^Click Login for AnnaHelpLine$")
     public void click_Login_for_annaHelpLine() throws IOException {
         clickLoginButton(driver);

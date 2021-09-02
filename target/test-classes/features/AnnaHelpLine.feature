@@ -3,8 +3,8 @@ Feature: Testing AnnaHelpline
 
     @AnnaHelpLine
     Scenario Outline:  AnnaHelp Line
-        Given Access BrowserStack For AnnaHelpLine
-        Then Launch chrome browser for AnnaHelpLine
+        Given Access WebDriverManager For AnnaHelpLine
+        Then Launch chrome browser for "<Live>" AnnaHelpLine
         Then Click Login for AnnaHelpLine
         Then Enter Phone number for AnnaHelpLine
         Then Then click countinue button AnnaHelpLine
@@ -25,8 +25,8 @@ Feature: Testing AnnaHelpline
         Then Quit Browser
 
         Examples:
-            | Website   |
-            | Framework |
+            | Website   | Stage                  | Live                 |
+            | Framework | Stage.url.annaHelpLine | Live.url.annaHelpine |
 
 
 
