@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.runner.RunWith;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -37,33 +40,45 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
+    @Given("Access Grid")
+    public void grid_console() throws MalformedURLException {
+        DesiredCapabilities cap = new DesiredCapabilities();
+        cap.setBrowserName("chrome");
+        cap.setPlatform(Platform.WINDOWS);
+        ChromeOptions op = new ChromeOptions();
+        op.setHeadless(true);
+        op.merge(cap);
+        String huburl = "http://192.168.0.164:4444/wd/hub";
+        driver = new RemoteWebDriver(new URL(huburl), op);
+    }
+
     @Given("^Access BrowserStack For AnnaHelpLine$")
     public void access_BrowserStack() throws IOException {
         Hashtable<String, String> capsHashtable = new Hashtable<String, String>();
-            capsHashtable.put("browser", "chrome");
-            capsHashtable.put("browser_version", "latest");
-            capsHashtable.put("os", "Windows");
-            capsHashtable.put("os_version", "10");
-            capsHashtable.put("build", "AnnaHelpLine-browserstack-build-1");
-            capsHashtable.put("name", "Thread 1" + getcurrrentDateAndTime());
+        capsHashtable.put("browser", "chrome");
+        capsHashtable.put("browser_version", "latest");
+        capsHashtable.put("os", "Windows");
+        capsHashtable.put("os_version", "10");
+        capsHashtable.put("build", "AnnaHelpLine-browserstack-build-1");
+        capsHashtable.put("name", "Thread 1" + getcurrrentDateAndTime());
 
-            // Execute caps
-            String key;
-            DesiredCapabilities caps = new DesiredCapabilities();
-            // Iterate over the hashtable and set the capabilities
-            Set<String> keys = capsHashtable.keySet();
-            Iterator<String> itr = keys.iterator();
-            while (itr.hasNext()) {
-                key = itr.next();
-                caps.setCapability(key, capsHashtable.get(key));
-            }
+        // Execute caps
+        String key;
+        DesiredCapabilities caps = new DesiredCapabilities();
+        // Iterate over the hashtable and set the capabilities
+        Set<String> keys = capsHashtable.keySet();
+        Iterator<String> itr = keys.iterator();
+        while (itr.hasNext()) {
+            key = itr.next();
+            caps.setCapability(key, capsHashtable.get(key));
+        }
 
-            driver = new RemoteWebDriver(new URL(URL), caps);
+        driver = new RemoteWebDriver(new URL(URL), caps);
 
-            driver.get(getValueFromDataConfig("Stage.url.annaHelpLine"));
-            // driver.get("https://www.onemindindia.com/home");
-            driver.getWindowHandle();
-            driver.manage().window().maximize();
+        driver.get(getValueFromDataConfig("Stage.url.annaHelpLine"));
+        // driver.get("https://www.onemindindia.com/home");
+        driver.getWindowHandle();
+        driver.manage().window().maximize();
     }
 
     @Then("^Launch chrome browser for AnnaHelpLine$")
@@ -77,11 +92,11 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
 
     @Then("^Launch chrome browser for \"([^\"]*)\" AnnaHelpLine$")
     public void launch_chrome_browser_for_something_annahelpline(String env) throws Throwable {
-       // Launching sample website
-       driver.get(getValueFromDataConfig(env));
-       // driver.get("https://www.onemindindia.com/home");
-       driver.getWindowHandle();
-       driver.manage().window().maximize();
+        // Launching sample website
+        driver.get(getValueFromDataConfig(env));
+        // driver.get("https://www.onemindindia.com/home");
+        driver.getWindowHandle();
+        driver.manage().window().maximize();
     }
 
     @Then("^Click Login for AnnaHelpLine$")
@@ -190,13 +205,13 @@ public class annaHelpLineStepDefs extends mainPageForAnnaHelpLine {
     }
 
     @Then("Verify complaint creation")
-    public void verify_complaint_creation() throws Exception{
+    public void verify_complaint_creation() throws Exception {
         complaintCreationVerification(driver);
         getListOfComplaintCards(driver);
     }
 
     @Then("Quit Browser")
-    public void quit_browser(){
+    public void quit_browser() {
         quitBrowser(driver);
     }
 

@@ -7,11 +7,17 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.List;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class mainPageForAnnaHelpLine extends superClass {
@@ -20,6 +26,17 @@ public class mainPageForAnnaHelpLine extends superClass {
         List<WebElement> ListOfLocation;
         Boolean welcomebackTextIsDisplayed;
         List<WebElement> ListofComplaints;
+
+        public void gridconsole() throws MalformedURLException {
+                DesiredCapabilities cap = new DesiredCapabilities();
+                cap.setBrowserName("chrome");
+                cap.setPlatform(Platform.WINDOWS);
+                ChromeOptions op = new ChromeOptions();
+                op.setHeadless(true);
+                op.merge(cap);
+                String huburl = "http://192.168.0.164:4444/wd/hub";
+                driver = new RemoteWebDriver(new URL(huburl), op);
+        }
 
         public void clickLoginButton(WebDriver driver) throws IOException {
                 getwaitdriver(driver).until(ExpectedConditions

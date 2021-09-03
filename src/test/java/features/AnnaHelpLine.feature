@@ -29,6 +29,32 @@ Feature: Testing AnnaHelpline
             | Framework | Stage.url.annaHelpLine | Live.url.annaHelpine |
 
 
+    @Grid
+    Scenario Outline:  AnnaHelp Line Grid
+        Given Access Grid
+        Then Launch chrome browser for "<Live>" AnnaHelpLine
+        Then Click Login for AnnaHelpLine
+        Then Enter Phone number for AnnaHelpLine
+        Then Then click countinue button AnnaHelpLine
+        Then Then click countinue button AnnaHelpLine
+        Then Enter otp
+        Then Then click countinue button AnnaHelpLine
+        Then Wait action for "10" seconds AnnaHelpLine
+        Then Click new Complaint
+        Then choose issue location
+        Then choose issue street
+        Then enter Address
+        Then choose issue category
+        Then choose issue
+        Then choose specific issue
+        Then enter issue details
+        Then click submit
+        Then Verify complaint creation
+        Then Quit Browser
+
+        Examples:
+            | Website   | Stage                  | Live                 |
+            | Framework | Stage.url.annaHelpLine | Live.url.annaHelpine |
 
 
 
